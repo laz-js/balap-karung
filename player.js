@@ -16,7 +16,7 @@ class Player {
   
   loncat() {
     this.x += this.kecepatan
-    this.kecepatan -= 0.1
+    this.kecepatan /= 1.01
   }
   
   finish(garis) {

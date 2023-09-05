@@ -18,7 +18,7 @@ const mulaiButton = {
 }
 
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(window.innerWidth, window.innerHeight);
   player1 = new Player("Player 1", 70, 100, color(255, 0, 0))
   player2 = new Player("Player 2", 70, 300, color(0, 0, 255))
 }

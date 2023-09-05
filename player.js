@@ -4,7 +4,7 @@ class Player {
     this.x = x
     this.y = y
     this.d = 50
-    this.kecepatan = 10
+    this.kecepatan = 15
     this.warna = color(warna)
     this.menang = false
   }
@@ -15,7 +15,7 @@ class Player {
   }
   
   loncat() {
-    this.x += this.kecepatan
+    this.x += 5 + this.kecepatan
     this.kecepatan /= 1.01
   }
   

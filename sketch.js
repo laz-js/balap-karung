@@ -1,8 +1,10 @@
 let player1, player2;
 let startLine, finishLine;
-let game = false
+let game = false;
+let bgLapangan, loncatSound;
+
 const mulaiButton = {
-  x: 300,
+  x: 200,
   y: 200,
   w: 75,
   h: 50,
@@ -17,16 +19,26 @@ const mulaiButton = {
   }
 }
 
+function preload() {
+  bgLapangan = loadImage('assets/bg-lapangan.jpg')
+  
+  soundFormats('mp3', 'ogg')
+  loncatSound = loadSound('assets/loncat.mp3')
+}
+
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  player1 = new Player("Player 1", 70, 100, color(255, 0, 0))
+  player1 = new Player("Player 1", 70, 200, color(255, 0, 0))
   player2 = new Player("Player 2", 70, 300, color(0, 0, 255))
+  mulaiButton.x = width/2
+  mulaiButton.y = height/2
 }
 
 function draw() {
   background('#eccb98');
-  startLine = garisVertikal(100, 30)
-  finishLine = garisVertikal(width-100, 30)
+  image(bgLapangan, 0, 0, width, height)
+  startLine = garisVertikal(100, 100)
+  finishLine = garisVertikal(width-100, 100)
   
   if (!game) mulaiButton.tampilkan()
   
@@ -40,6 +52,7 @@ function draw() {
     menang(player2)
   }
 }
+
 function garisVertikal(x, y) {
   line(x, y, x, height-y)
 }
@@ -68,10 +81,10 @@ function mouseClicked() {
 function keyPressed() {
   if (game) {
     if (key == 'd') {
-      player1.loncat()
+      player1.loncat(loncatSound)
     }
     if (keyCode == RIGHT_ARROW) {
-      player2.loncat()
+      player2.loncat(loncatSound)
     }  
   }
 }

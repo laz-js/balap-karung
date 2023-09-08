@@ -4,7 +4,7 @@ class Player {
     this.x = x
     this.y = y
     this.d = 50
-    this.kecepatan = 15
+    this.kecepatan = width / 20
     this.warna = color(warna)
     this.menang = false
   }
@@ -14,9 +14,10 @@ class Player {
     ellipse(this.x, this.y, this.d, this.d)
   }
   
-  loncat() {
-    this.x += 5 + this.kecepatan
-    this.kecepatan /= 1.01
+  loncat(sound) {
+    sound.play()
+    this.x += this.kecepatan
+    this.kecepatan /= 1.001
   }
   
   finish(garis) {

@@ -2,6 +2,7 @@ let player1, player2;
 let startLine, finishLine;
 let game = false;
 let bgLapangan, loncatSound;
+let karakter1, karakter2, karakter3;
 
 const mulaiButton = {
   x: 200,
@@ -21,6 +22,9 @@ const mulaiButton = {
 
 function preload() {
   bgLapangan = loadImage('assets/bg-lapangan.jpg')
+  karakter1 = loadImage('assets/karakter1.png')
+  karakter2 = loadImage('assets/karakter2.png')
+  karakter3 = loadImage('assets/karakter3.png')
   
   soundFormats('mp3', 'ogg')
   loncatSound = loadSound('assets/loncat.mp3')
@@ -28,8 +32,9 @@ function preload() {
 
 function setup() {
   createCanvas(window.innerWidth, window.innerHeight);
-  player1 = new Player("Player 1", 70, 200, color(255, 0, 0))
-  player2 = new Player("Player 2", 70, 300, color(0, 0, 255))
+  player1 = new Player("Player 1", 20, 100, color(255, 0, 0), karakter1)
+  player2 = new Player("Player 2", 20, 200, color(0, 255, 0), karakter2)
+  player3 = new Player("Player 3", 20, 300, color(0, 0, 255), karakter3)
   mulaiButton.x = width/2
   mulaiButton.y = height/2
 }
@@ -44,12 +49,16 @@ function draw() {
   
   player1.gambar()
   player2.gambar()
+  player3.gambar()
   
   if (player1.finish(width-100)) {
     menang(player1)
   }
   if (player2.finish(width-100)) {
     menang(player2)
+  }
+  if (player3.finish(width-100)) {
+    menang(player3)
   }
 }
 
@@ -66,10 +75,12 @@ function menang(player) {
 
 function mulai() {
   game = true
-  player1.x = 70
-  player2.x = 70
-  player1.kecepatan = 10
-  player2.kecepatan = 10
+  player1.x = 20
+  player2.x = 20
+  player3.x = 20
+  player1.kecepatan = width / 20
+  player2.kecepatan = width / 20
+  player3.kecepatan = width / 20
 }
 
 function mouseClicked() {
@@ -83,8 +94,11 @@ function keyPressed() {
     if (key == 'd') {
       player1.loncat(loncatSound)
     }
-    if (keyCode == RIGHT_ARROW) {
+    if (key == 'l') {
       player2.loncat(loncatSound)
-    }  
+    }
+    if (keyCode == RIGHT_ARROW) {
+      player3.loncat(loncatSound)
+    }
   }
 }

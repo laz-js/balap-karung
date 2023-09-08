@@ -1,17 +1,17 @@
 class Player {
-  constructor(nama, x, y, warna) {
+  constructor(nama, x, y, warna, karakter) {
     this.nama = nama
     this.x = x
     this.y = y
-    this.d = 50
-    this.kecepatan = width / 20
-    this.warna = color(warna)
+    this.size = 120
+    this.kecepatan = width / (150 - this.size)
+    this.warna = warna
+    this.karakter = karakter
     this.menang = false
   }
   
   gambar() {
-    fill(this.warna)
-    ellipse(this.x, this.y, this.d, this.d)
+    image(this.karakter, this.x, this.y, this.size, this.size)
   }
   
   loncat(sound) {
@@ -21,6 +21,6 @@ class Player {
   }
   
   finish(garis) {
-    return this.x + this.d/2 > garis
+    return this.x + this.size/1.5 > garis
   }
 }

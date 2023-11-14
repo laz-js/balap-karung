@@ -7,7 +7,6 @@ class Player {
     this.kecepatan = width / (150 - this.size)
     this.warna = warna
     this.karakter = karakter
-    this.menang = false
   }
   
   gambar() {
